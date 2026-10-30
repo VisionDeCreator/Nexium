@@ -1,0 +1,39 @@
+[workspace]
+members = ["crates/primitives", "crates/consensus", "crates/ledger", "crates/node", "crates/move-adapter"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93.1"
+license = "Apache-2.0"
+
+[workspace.dependencies]
+anyhow = "=1.0.102"
+bcs = "=0.1.5"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.149"
+sha3 = "=0.10.8"
+hex = "=0.4.3"
+ed25519-dalek = "=2.2.0"
+rand = "=0.8.5"
+clap = { version = "=4.6.0", features = ["derive"] }
+tokio = { version = "=1.51.1", features = ["macros", "rt-multi-thread", "net", "signal", "time", "sync"] }
+axum = "=0.8.8"
+reqwest = { version = "=0.12.28", default-features = false, features = ["json", "stream"] }
+rusqlite = { version = "=0.32.1", features = ["bundled"] }
+tempfile = "=3.27.0"
+nexium-primitives = { path = "crates/primitives" }
+nexium-consensus = { path = "crates/consensus" }
+nexium-ledger = { path = "crates/ledger" }
+# One VM lineage only. No Starcoin framework, consensus, genesis or authorities.
+move-vm-runtime = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4" }
+move-core-types = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4", features = ["address32"] }
+move-binary-format = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4" }
+move-bytecode-verifier = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4" }
+move-compiler = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4", features = ["address32"] }
+move-vm-types = { git = "https://github.com/starcoinorg/move", rev = "cc98ac02caa73e64e6c8b781c61de356b45801c4" }
+
+[profile.release]
+overflow-checks = true
+

@@ -1,0 +1,25 @@
+[package]
+name = "nexium-node"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "nexium"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+hex.workspace = true
+ed25519-dalek.workspace = true
+rand.workspace = true
+clap.workspace = true
+tokio.workspace = true
+axum.workspace = true
+reqwest.workspace = true
+nexium-primitives.workspace = true
+nexium-consensus.workspace = true
+nexium-ledger.workspace = true

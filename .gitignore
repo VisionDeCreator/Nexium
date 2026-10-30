@@ -1,0 +1,5 @@
+/target/
+/.devnet/
+*.sqlite*
+*.key
+__pycache__/
